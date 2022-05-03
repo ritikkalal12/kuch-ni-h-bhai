@@ -1,0 +1,101 @@
+<!--C34 Ritik Kalal
+202101619010229
+
+Question3. Create a web page like below and perform the given task.
+CRUST TYPE : Select Field
+Toppings : Checkbox.
+
+Add a Button to check validations
+o Crust Type must be Thin, Thick, Double Cheese.
+o User can select only one Topping.
+o Selected Crust Type and Toppings must be print on a same page in a
+Text Box.-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pizza form</title>
+
+	<script type="text/javascript">
+        window.onload = function () 
+        {
+            var Toppings = document.getElementById("Toppings");
+
+            var chks = Toppings.getElementsByTagName("INPUT");
+
+            for (var i = 0; i < chks.length; i++) 
+            {
+                chks[i].onclick = function () 
+                {
+                    for (var i = 0; i < chks.length; i++) 
+                    {
+                        if (chks[i] != this && this.checked) 
+                        {
+                            chks[i].checked = false;
+                        }
+                    }
+                };
+            }
+        };
+	
+        function checkbox()
+        {
+        var Toppings=document.forms[0];
+        var txt="";
+        var r;
+        for (r=0;r<Toppings.length;r++)
+        {
+            if (Toppings[r].checked)
+            {
+                txt=txt + Toppings[r].value + "";
+            }
+        }
+	var x = document.getElementById("mySelect").value;
+        document.getElementById("order").value=  "Your Selected crust is : "+x+"             Your Selected Topping Is : "+txt;
+    }
+    </script>
+</head>
+<body>
+	<center>
+	
+	<h3>How would you like your pizza to be?</h3>
+	
+	 <center>
+	 
+	<form>
+		<b>Crust Type: </b>
+		<select id="mySelect">
+			<option value="Thin" id="thin" name="crust">Thin</option>
+			<option value="Thick" id="thick" name="crust">Thick</option>
+			<option value="Double Cheese" id="doublecheese" name="crust">Double Cheese</option>
+		</select>
+        
+		<br><br>
+		<b>Toppings: </b>
+		<br>
+        <table id="Toppings" name="toppings">
+            <tr>
+                <td><input type="checkbox" name="Toppings" value="Tomato" id="chktomato">Tomato</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="Toppings" value="Capsicum" id="chkcapsicum">Capsicum</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="Toppings" value="Paneer" id="chkpaneer">Paneer</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="Toppings" value="Olives" id="chkolives">Olives</label></td>
+            </tr>
+        </table>
+
+		<br>
+		
+		<input type="button" onclick="checkbox()" value="Submit"><br><br>
+        
+        <input type="text" id="order" size="100">
+	</form>
+	</center>
+</body>
+</html>
